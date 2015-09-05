@@ -96,8 +96,6 @@ class PyLinkedinAPI():
         
     def get_basic_profile(self):
         url = self.__build_url_get_basic_profile()
-        print(url)
-
         content = self.__execute_request_get(url)
         return content
 
@@ -119,7 +117,7 @@ class PyLinkedinAPI():
         data = self.__publish_data(comment)
         self.__execute_request_post(url, data)
         
-    def publish_comapny(self, id, comment):
+    def publish_company(self, id, comment):
         url = self.__build_url_publish_company(id)    
         data = self.__publish_data(comment)
         self.__execute_request_post(url, data)

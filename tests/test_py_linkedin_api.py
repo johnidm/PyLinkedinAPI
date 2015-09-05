@@ -4,13 +4,12 @@
 import unittest
 import httpretty
 import json
+
 from sure import expect
 
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIClientError
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIInternalServerError
-
-
 
 class TestPyLinkedin(unittest.TestCase):
 
@@ -101,5 +100,5 @@ class TestPyLinkedin(unittest.TestCase):
         pass
 
     @httpretty.activate
-    def test_publish_comapany(self):
+    def test_publish_company(self):
         pass
