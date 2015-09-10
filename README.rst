@@ -21,7 +21,6 @@ Features
 
     from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
     
-
     access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
     
     linkedin = PyLinkedinAPI(access_token)
@@ -34,7 +33,12 @@ Features
     
     linkedin.publish_comapny(5470551, 'This is my first package in Python')
 
+Utils
+--------
 
+* REST Console
+	
+	https://developer.linkedin.com/rest-console
 
 
 

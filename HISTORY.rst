@@ -3,7 +3,26 @@
 History
 -------
 
-0.1.0 (2015-01-11)
+0.1.0 (2015-05-09)
 ---------------------
 
 * First release on PyPI.
+
+
+0.1.1 (2015-05-09)
+---------------------
+
+* Fixed bugs.
+
+
+0.1.2 (2015-05-09)
+---------------------
+
+* Fixed bugs.
+
+0.1.3 (2015-10-09)
+---------------------
+
+* Added support to share on LinkedIn a collection of content fields.
+
+
