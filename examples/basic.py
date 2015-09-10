@@ -5,7 +5,7 @@ from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
 # from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIClientError
 # from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIInternalServerError
 
-access_token = 'AQU7mB9mL8MnEmy_xqkToeSwdCNJBYb0qxw_DGaJnGU2HP3zkKIlWR2mMbPwmGk_qyyjsHsmYh2iPgPwJwC7xAcnONM53GTUXPSv0xtaBrZ_w0FG5ImNmrflOHwzTe2Vx540aCWhw9v7fEL4dpgrIaXXv5PxxYCFeqmcCMOwBHZm0O-RUiA'
+access_token = 'AQU7mB9mL8MnEmy_xqkToeSwd...'
 
 
 comment = "Hey, Do you want beer"
@@ -15,12 +15,15 @@ site = "http://www.johnidouglas.com.br/"
 image = "http://pngimg.com/upload/beer_PNG2383.png"
 
 
-import pdb; pdb.set_trace()
-
 # print(linkedin.get_basic_profile())
 # print(linkedin.get_companies())
 
 linkedin = PyLinkedinAPI(access_token)
+
+print(linkedin.publish_profile_comment(comment))
+print(linkedin.publish_company_comment(5470551, comment))
+
+"""
 
 json = linkedin.publish_company(5470551,
                                 comment,
@@ -40,8 +43,7 @@ json = linkedin.publish_profile(comment,
                                 submitted_image_url=image)
 
 print(json)
-
-
+"""
 
 """
 

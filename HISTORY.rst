@@ -25,4 +25,7 @@ History
 
 * Added support to share on LinkedIn a collection of content fields.
 
+0.1.4 (2015-10-09)
+---------------------
 
+* Added support to share only comment field.

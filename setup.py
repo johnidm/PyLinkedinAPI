@@ -26,7 +26,7 @@ test_requirements = [
 
 setup(
     name='PyLinkedinAPI',
-    version='0.1.2',
+    version='0.1.4',
     description="Python library to access Liknkedin API",
     long_description=readme + '\n\n' + history,
     author="Johni Douglas Marangon",

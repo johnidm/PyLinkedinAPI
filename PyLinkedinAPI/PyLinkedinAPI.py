@@ -30,6 +30,16 @@ class PyLinkedinAPI():
         content = json.loads(json.decode('utf-8'))
         return content
 
+    def __publish_data_comment(self, comment):
+        data = {
+            "comment": comment,
+            "visibility": {
+                "code": "anyone"
+            }
+        }
+
+        return json.dumps(data)
+
     def __publish_data(self, comment, **kwargs):
         title = kwargs.get('title', '')
         description = kwargs.get('description', '')
@@ -134,4 +144,14 @@ class PyLinkedinAPI():
     def publish_company(self, id, comment, **kwargs):
         url = self.__build_url_publish_company(id)
         data = self.__publish_data(comment, **kwargs)
+        return self.__execute_request_post(url, data)
+
+    def publish_profile_comment(self, comment):
+        url = self.__build_url_publish_profile()
+        data = self.__publish_data_comment(comment)
+        return self.__execute_request_post(url, data)
+
+    def publish_company_comment(self, id, comment):
+        url = self.__build_url_publish_company(id)
+        data = self.__publish_data_comment(comment)
         return self.__execute_request_post(url, data)
