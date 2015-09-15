@@ -1,5 +1,12 @@
 # Python Linkedin API
 
+### Basic use
+
+from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
+    
+access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
+    
+linkedin = PyLinkedinAPI(access_token)
 
 
 ### Features
@@ -7,13 +14,7 @@
 
 * Get data profile
 
-```
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
-access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
-linkedin = PyLinkedinAPI(access_token)
-    
+```    
 profile = linkedin.get_basic_profile()
 
 print(profile)
@@ -22,12 +23,6 @@ print(profile)
 * Get data companies
 
 ```
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
-access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
-linkedin = PyLinkedinAPI(access_token)
-
 companies = linkedin.get_companies()
 
 print(companies)
@@ -36,12 +31,6 @@ print(companies)
 * Publish comment on profile
 
 ```    
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
-access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
-linkedin = PyLinkedinAPI(access_token)
-
 linkedin.publish_profile_comment('This is my first package in Python')
 ```
 
@@ -49,25 +38,12 @@ linkedin.publish_profile_comment('This is my first package in Python')
 
 
 ```
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
-access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
-linkedin = PyLinkedinAPI(access_token)
-
 linkedin.publish_company_comment(5470551, 'This is my first package in Python')
 ```
 
 Publush Content/Comment on profile
 
 ```
-
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
-access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
-linkedin = PyLinkedinAPI(access_token)
-
 linkedin.publish_profile(comment,
                          title=title,
                          description=description,
@@ -78,12 +54,6 @@ linkedin.publish_profile(comment,
 Publush Content/Comment on company
 
 ```
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
-access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
-linkedin = PyLinkedinAPI(access_token)
-
 linkedin.publish_company(5470551,
                          comment,
                          title=title,
