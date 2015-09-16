@@ -2,12 +2,13 @@
 
 ### Basic use
 
+```
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
     
 access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
     
 linkedin = PyLinkedinAPI(access_token)
-
+```
 
 ### Features
 --------
