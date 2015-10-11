@@ -9,31 +9,30 @@ from sure import expect
 
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIClientError
-from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIInternalServerError
+
 
 class TestPyLinkedin(unittest.TestCase):
 
     def setUp(self):
         access_token = 'AQVaE34QblVhvPlUn-6zWh3YLgHjx...'
         self.linkedin = PyLinkedinAPI(access_token)
-        
+
     @httpretty.activate
     def test_get_basic_profile(self):
-         
-         
+
         data = '''
             {
+                "id": "RzvdfgdfgGT",
                 "firstName": "Johni",
-                "headline": "Full Stack Developer na Contentools",
-                "id": "RzvS62YRGT",
                 "lastName": "Douglas Marangon",
+                "headline": "Senior Software Engineer",
                 "siteStandardProfileRequest":  {
-                    "url": "https://www.linkedin.com/profile/view?id=275012757&authType=name&authToken=CdC0&trk=api*a3227641*s3301901*"
+                    "url": "https://www.linkedin.com/profile/v..."
                 }
             }
         '''
-       
-        httpretty.register_uri(httpretty.GET, 
+
+        httpretty.register_uri(httpretty.GET,
                             "https://api.linkedin.com/v1/people/~?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json",
                             body=data,
                             content_type="application/json")
@@ -55,7 +54,7 @@ class TestPyLinkedin(unittest.TestCase):
                     "name": "Self Owned"
                   },
                   "id": 5470551,
-                  "logoUrl": "https://media.licdn.com/mpr/mpr/AAEtNDhkYQ.png",
+                  "logoUrl": "https://media.licdn.com/mpr/mpr/e34...Po.png",
                   "name": "Johni Corp"
                 }
               ]
@@ -70,7 +69,6 @@ class TestPyLinkedin(unittest.TestCase):
         basic_profile = self.linkedin.get_companies()
         data = json.loads(data)
         expect(basic_profile).to.equal(data)
-
 
     @httpretty.activate
     def test_get_profile_error_403(self):
@@ -94,6 +92,49 @@ class TestPyLinkedin(unittest.TestCase):
             self.linkedin.get_basic_profile()
 
         expect(str(ex.exception)).to.equal( 'Member XXXX does not have permission to get company 9898')
+
+    @httpretty.activate
+    def test_get_profile_fields(self):
+        data = '''
+            {
+                "id": "RdfgsgfGT",
+                "numConnections": 194,
+                "pictureUrl": "https://media.licdn.com/mpr/mprx/0_v0z...jQx",
+                "emailAddress": "johni@johni.com"
+            }
+        '''
+        httpretty.register_uri(httpretty.GET, 
+                            'https://api.linkedin.com/v1/people/~:(id,num-connections,picture-url,email-address)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json',
+                            body=data,
+                            status=200,
+                            content_type="application/json")
+
+        basic_profile = self.linkedin.get_profile(['id', 'num-connections', 'picture-url', 'email-address'])
+        data = json.loads(data)
+        expect(basic_profile).to.equal(data)
+
+    @httpretty.activate
+    def test_get_profile_field_not_found(self):
+        data = '''
+            {
+              "errorCode": 0,
+              "message": "Unknown field {data-profile} in resource {Person}",
+              "requestId": "YUUYSSII",
+              "status": 400,
+              "timestamp": 1444524410254
+            }
+        '''
+
+        httpretty.register_uri(httpretty.GET, 
+                            'https://api.linkedin.com/v1/people/~:(id,num-connections,data-profile)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json',
+                            body=data,
+                            status=400,
+                            content_type="application/json")
+
+        with self.assertRaises(PyLinkedinAPIClientError) as ex:
+            self.linkedin.get_profile(['id', 'num-connections', 'data-profile'])
+
+        expect(str(ex.exception)).to.equal('Unknown field {data-profile} in resource {Person}')
 
     @httpretty.activate
     def test_publish_profile(self):

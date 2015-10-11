@@ -29,3 +29,9 @@ History
 ---------------------
 
 * Added support to share only comment field.
+
+0.1.5 (2015-10-10)
+---------------------
+
+* Documentation improvement
+* Add method get_profile - fields of profile: https://developer.linkedin.com/docs/fields

@@ -94,6 +94,16 @@ class PyLinkedinAPI():
 
         return uri
 
+    def __build_url_get_profile(self, fields):
+
+        uri = '{url}{resource}~:({fields})?oauth2_access_token={access_token}&format=json'.format(
+            url=self.BASE_URI_API,
+            resource='people/',
+            fields=','.join(fields),
+            access_token=self.access_token)
+
+        return uri
+
     def __check_response_status_code(self, resp):
         status_code = resp.status_code
 
@@ -123,9 +133,10 @@ class PyLinkedinAPI():
         content = self.__execute_request_get(url)
         return content
 
-    def get_profile(self):
-        # https://api.linkedin.com/v1/people/~:(id,num-connections,picture-url)?format=json
-        pass
+    def get_profile(self, fields):
+        url = self.__build_url_get_profile(fields)
+        content = self.__execute_request_get(url)
+        return content
 
     def get_companies(self):
         url = self.__build_url_get_companies()
