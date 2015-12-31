@@ -2,10 +2,7 @@
 Contributing
 ============
 
-Contributions are welcome, and they are greatly appreciated! Every
-little bit helps, and credit will always be given.
-
-You can contribute in many ways:
+Contributions are welcome, you can contribute in many ways:
 
 Types of Contributions
 ----------------------
@@ -15,22 +12,10 @@ Report Bugs
 
 Report bugs at https://github.com/johnidm/PyLinkedinAPI/issues.
 
-If you are reporting a bug, please include:
-
-* Your operating system name and version.
-* Any details about your local setup that might be helpful in troubleshooting.
-* Detailed steps to reproduce the bug.
-
-Fix Bugs
+Fix Bugs and Implement Features
 ~~~~~~~~
 
 Look through the GitHub issues for bugs. Anything tagged with "bug"
-is open to whoever wants to implement it.
-
-Implement Features
-~~~~~~~~~~~~~~~~~~
-
-Look through the GitHub issues for features. Anything tagged with "feature"
 is open to whoever wants to implement it.
 
 Write Documentation
@@ -39,18 +24,6 @@ Write Documentation
 Python Linkedin API could always use more documentation, whether as part of the
 official Python Linkedin API docs, in docstrings, or even on the web in blog posts,
 articles, and such.
-
-Submit Feedback
-~~~~~~~~~~~~~~~
-
-The best way to send feedback is to file an issue at https://github.com/johnidm/PyLinkedinAPI/issues.
-
-If you are proposing a feature:
-
-* Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
 
 Get Started!
 ------------
@@ -69,7 +42,14 @@ Ready to contribute? Here's how to set up `PyLinkedinAPI` for local development.
     $ cd PyLinkedinAPI/
     $ python setup.py develop
 
-4. Create a branch for local development::
+4. You need to generate temporary access token for basic tests::
+
+- Acces the https://developer.linkedin.com/rest-console
+- On then Authentication menu select OAuth2
+- After you need to login and authorization to access some information from your LinkedIn profile
+- Send anywhere request URL, for example https://api.linkedin.com/v1/people/~?format=json, and copy field access token 
+
+5. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
