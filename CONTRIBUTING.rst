@@ -55,7 +55,7 @@ Ready to contribute? Here's how to set up `PyLinkedinAPI` for local development.
     $ python setup.py test
     $ tox
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+   To get `flake8` and `tox`, just pip install them into your virtualenv.
 
 6. Commit your changes and push your branch to GitHub::
 
