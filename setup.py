@@ -21,7 +21,6 @@ requirements = [
 test_requirements = [
     'HTTPretty',
     'sure',
-    'flake8',
 ]
 
 setup(
