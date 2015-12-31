@@ -27,7 +27,7 @@ Ready to contribute? Here's how to set up `PyLinkedinAPI` for local development.
 1. Fork the `PyLinkedinAPI` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone https://github.com/johnidm/PyLinkedinAPI.git
+    $ git clone git@github.com:your_name_here/PyLinkedinAPI.gi
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
