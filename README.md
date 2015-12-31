@@ -1,4 +1,7 @@
-# Python Linkedin API
+Python Linkedin API
+======
+
+![](https://travis-ci.org/johnidm/PyLinkedinAPI.svg)
 
 The Python Linkedin provides a easy interface to the Linkedin API.
 
