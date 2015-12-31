@@ -61,7 +61,7 @@ class TestPyLinkedin(unittest.TestCase):
             }
         '''
 
-        httpretty.register_uri(httpretty.GET, 
+        httpretty.register_uri(httpretty.GET,
                             "https://api.linkedin.com/v1/companies:(id,name,logo-url,company-type)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json&is-company-admin=true",
                             body=data,
                             content_type="application/json")
@@ -82,7 +82,7 @@ class TestPyLinkedin(unittest.TestCase):
             }
         '''
 
-        httpretty.register_uri(httpretty.GET, 
+        httpretty.register_uri(httpretty.GET,
                             "https://api.linkedin.com/v1/people/~?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json",
                             body=data,
                             status=403,
@@ -103,7 +103,7 @@ class TestPyLinkedin(unittest.TestCase):
                 "emailAddress": "johni@johni.com"
             }
         '''
-        httpretty.register_uri(httpretty.GET, 
+        httpretty.register_uri(httpretty.GET,
                             'https://api.linkedin.com/v1/people/~:(id,num-connections,picture-url,email-address)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json',
                             body=data,
                             status=200,
@@ -125,7 +125,7 @@ class TestPyLinkedin(unittest.TestCase):
             }
         '''
 
-        httpretty.register_uri(httpretty.GET, 
+        httpretty.register_uri(httpretty.GET,
                             'https://api.linkedin.com/v1/people/~:(id,num-connections,data-profile)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json',
                             body=data,
                             status=400,

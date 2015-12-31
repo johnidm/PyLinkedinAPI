@@ -19,7 +19,7 @@ requirements = [
 ]
 
 test_requirements = [
-    'HTTPretty',
+    'HTTPretty==0.8.10',
     'sure',
 ]
 
