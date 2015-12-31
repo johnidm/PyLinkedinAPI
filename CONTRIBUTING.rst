@@ -83,4 +83,6 @@ Tips
 
 To run a subset of tests::
 
+    $ pip install sure
+    $ pip install httpretty==0.8.10
     $ python -m unittest tests.test_linkedin_api
