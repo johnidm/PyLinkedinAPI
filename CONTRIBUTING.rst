@@ -83,4 +83,4 @@ Tips
 
 To run a subset of tests::
 
-    $ python -m unittest tests.test_PyLinkedinAPI
+    $ python -m unittest tests.test_linkedin_api
