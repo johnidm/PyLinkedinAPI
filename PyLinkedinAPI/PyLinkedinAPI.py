@@ -100,8 +100,7 @@ class PyLinkedinAPI():
 
     def __build_url_get_profile(self, fields):
 
-        uri = '{url}{resource}~:({fields})?oauth2_access_token={access_token}&\
-                                                        format=json'.format(
+        uri = '{url}{resource}~:({fields})?oauth2_access_token={access_token}&format=json'.format(
             url=self.BASE_URI_API,
             resource='people/',
             fields=','.join(fields),

@@ -66,10 +66,10 @@ def publish_on_profile():
     comment, title, description, site, image = get_content()
 
     data = linkedin.publish_profile(comment,
-                                title=title,
-                                description=description,
-                                submitted_url=site,
-                                submitted_image_url=image)
+                                    title=title,
+                                    description=description,
+                                    submitted_url=site,
+                                    submitted_image_url=image)
 
     spaces(1)
     print(data)
@@ -82,11 +82,11 @@ def publish_on_company():
     comment, title, description, site, image = get_content()
 
     data = linkedin.publish_company(id,
-                                comment,
-                                title=title,
-                                description=description,
-                                submitted_url=site,
-                                submitted_image_url=image)
+                                    comment,
+                                    title=title,
+                                    description=description,
+                                    submitted_url=site,
+                                    submitted_image_url=image)
 
     spaces(1)
     print(data)
@@ -129,9 +129,3 @@ while True:
     except Exception as ex:
         spaces(2)
         print('Error: {}'.format(ex))
-
-
-
-
-
-

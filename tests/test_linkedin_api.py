@@ -23,6 +23,12 @@ class TestPyLinkedin(unittest.TestCase):
 
     GET_PROFILE_FIELD_NOT_FOUND = 'https://api.linkedin.com/v1/people/~:(id,num-connections,data-profile)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json'
 
+    POST_COMMENT_PROFILE = 'https://api.linkedin.com/v1/people/~/shares?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json'
+
+    POST_COMMENT_COMPANY = 'https://api.linkedin.com/v1/companies/536454/shares?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json'
+
+    POST_COMMENT_COMPANY_ERROR_403 = POST_COMMENT_COMPANY
+
     def setUp(self):
         access_token = 'AQVaE34QblVhvPlUn-6zWh3YLgHjx...'
         self.linkedin = PyLinkedinAPI(access_token)
@@ -148,6 +154,65 @@ class TestPyLinkedin(unittest.TestCase):
 
         expect(str(ex.exception)).to.equal(
             'Unknown field {data-profile} in resource {Person}')
+
+    @httpretty.activate
+    def test_publish_comment_on_profile(self):
+        response_body = '''{
+            "updateKey": "UPDATE-234454664-64564654646464634502",
+            "updateUrl": "https://www.linkedin.com/updates?discuss=&scope=2344546642&stype=M&topic=6456465464646463450&type=U&a=1gON"
+        }'''
+
+        httpretty.register_uri(httpretty.POST,
+                               TestPyLinkedin.POST_COMMENT_PROFILE,
+                               body=response_body,
+                               status=201,
+                               content_type="application/json")
+
+        comment = 'A laugh a day keeps the doctor away'
+        response = self.linkedin.publish_profile_comment(comment)
+        actual = json.loads(response_body)
+        expect(actual).to.equal(response)
+
+    @httpretty.activate
+    def test_publish_comment_on_company(self):
+        response_body = '''{
+            "updateKey": "UPDATE-234454664-64564654646464634502",
+            "updateUrl": "https://www.linkedin.com/updates?discuss=&scope=2344546642&stype=M&topic=6456465464646463450&type=U&a=1gON"
+        }'''
+
+        httpretty.register_uri(httpretty.POST,
+                               TestPyLinkedin.POST_COMMENT_COMPANY,
+                               body=response_body,
+                               status=201,
+                               content_type="application/json")
+
+        comment = 'Have You Tried Turning It Off And On Again?'
+        response = self.linkedin.publish_company_comment(536454, comment)
+        actual = json.loads(response_body)
+        expect(actual).to.equal(response)
+
+    @httpretty.activate
+    def test_publish_comment_on_company_error_403(self):
+        response_body = '''{
+              "errorCode": 0,
+              "message": "Unauthorized request",
+              "requestId": "2B5UXDUSL2",
+              "status": 403,
+              "timestamp": 1451574899170
+            }'''
+
+        httpretty.register_uri(httpretty.POST,
+                               TestPyLinkedin.POST_COMMENT_COMPANY_ERROR_403,
+                               body=response_body,
+                               status=403,
+                               content_type="application/json")
+
+        with self.assertRaises(PyLinkedinAPIClientError) as ex:
+            comment = 'Have You Tried Turning It Off And On Again?'
+            self.linkedin.publish_company_comment(536454, comment)
+
+        expect(str(ex.exception)).to.equal(
+            'Unauthorized request')
 
     @httpretty.activate
     def test_publish_profile(self):
