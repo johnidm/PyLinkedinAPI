@@ -7,16 +7,10 @@ Contributions are welcome, you can contribute in many ways:
 Types of Contributions
 ----------------------
 
-Report Bugs
+Report Bugs, Fix Bugs and Implement Features
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/johnidm/PyLinkedinAPI/issues.
-
-Fix Bugs and Implement Features
-~~~~~~~~
-
-Look through the GitHub issues for bugs. Anything tagged with "bug"
-is open to whoever wants to implement it.
+Look through the GitHub issues, https://github.com/johnidm/PyLinkedinAPI/issues, for bugs and improvements.
 
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
