@@ -20,18 +20,17 @@ If you don't have a access token I recommend to use the [requests-oauthlib](http
 
 See examples [here](https://github.com/johnidm/PyLinkedinAPI/blob/master/examples/basic.py)
 
-### Created instance
+### Created an instance
 
 ```python
->>>>>>> Add get profile based in fields
 from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPI
-    
+
 access_token = 'AQVaE34Qblm6uIhh3wVLXuhQPSI...'
-    
+
 linkedin = PyLinkedinAPI(access_token)
 ```
 
-### Features
+#### Features
 --------
 
 Get data profile
@@ -56,7 +55,7 @@ Publish comment on profile
 linkedin.publish_profile_comment('This is my first package in Python')
 ```
 
-Publish comment on company 
+Publish comment on company
 
 
 ```python
@@ -88,7 +87,7 @@ linkedin.publish_company(5470551,
 --------
 
 * REST Console
-	
+
 	https://developer.linkedin.com/rest-console
 
 
