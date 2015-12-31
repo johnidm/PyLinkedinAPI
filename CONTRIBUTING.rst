@@ -36,14 +36,7 @@ Ready to contribute? Here's how to set up `PyLinkedinAPI` for local development.
     $ cd PyLinkedinAPI/
     $ python setup.py develop
 
-4. You need to generate temporary access token for basic tests::
-
-- Acces the https://developer.linkedin.com/rest-console
-- On then Authentication menu select OAuth2
-- After you need to login and authorization to access some information from your LinkedIn profile
-- Send anywhere request URL, for example https://api.linkedin.com/v1/people/~?format=json, and copy field access token 
-
-5. Create a branch for local development::
+4. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 

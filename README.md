@@ -20,6 +20,15 @@ If you don't have a access token I recommend to use the [requests-oauthlib](http
 
 See examples [here](https://github.com/johnidm/PyLinkedinAPI/blob/master/examples/basic.py)
 
+You need to generate temporary access token for basic tests:
+
+* Acces the https://developer.linkedin.com/rest-console
+* On then Authentication menu select OAuth2
+* After you need to login and authorization to access some information from your LinkedIn profile
+* Send anywhere request URL, for example https://api.linkedin.com/v1/people/~?format=json, and copy field access token
+
+Run `python examples/basic.py` and insert the access token
+
 ### Created an instance
 
 ```python
