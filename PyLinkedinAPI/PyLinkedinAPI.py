@@ -62,14 +62,16 @@ class PyLinkedinAPI():
         return json.dumps(data)
 
     def __build_url_get_basic_profile(self):
-        url = '{url}people/~?oauth2_access_token={access_token}&format={format}'.format(
+        url = '{url}people/~?oauth2_access_token={access_token}&\
+                                            format={format}'.format(
             url=self.BASE_URI_API,
             access_token=self.access_token,
             format=self.default_format)
         return url
 
     def __build_url_get_companies(self):
-        uri = '{url}{resource}?oauth2_access_token={access_token}&format=json&is-company-admin=true'.format(
+        uri = '{url}{resource}?oauth2_access_token={access_token}&format=json&\
+                                                is-company-admin=true'.format(
             url=self.BASE_URI_API,
             resource="companies:(id,name,logo-url,company-type)",
             access_token=self.access_token)
@@ -77,7 +79,8 @@ class PyLinkedinAPI():
         return uri
 
     def __build_url_publish_profile(self):
-        uri = '{url}{resource}?oauth2_access_token={access_token}&format=json'.format(
+        uri = '{url}{resource}?oauth2_access_token={access_token}&\
+                                                format=json'.format(
             url=self.BASE_URI_API,
             resource='people/~/shares',
             access_token=self.access_token)
@@ -87,7 +90,8 @@ class PyLinkedinAPI():
     def __build_url_publish_company(self, id):
         resource = 'companies/{}/shares'.format(id)
 
-        uri = '{url}{resource}?oauth2_access_token={access_token}&format=json'.format(
+        uri = '{url}{resource}?oauth2_access_token={access_token}&\
+                                                format=json'.format(
             url=self.BASE_URI_API,
             resource=resource,
             access_token=self.access_token)
@@ -96,7 +100,8 @@ class PyLinkedinAPI():
 
     def __build_url_get_profile(self, fields):
 
-        uri = '{url}{resource}~:({fields})?oauth2_access_token={access_token}&format=json'.format(
+        uri = '{url}{resource}~:({fields})?oauth2_access_token={access_token}&\
+                                                        format=json'.format(
             url=self.BASE_URI_API,
             resource='people/',
             fields=','.join(fields),

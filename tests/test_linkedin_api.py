@@ -13,6 +13,16 @@ from PyLinkedinAPI.PyLinkedinAPI import PyLinkedinAPIClientError
 
 class TestPyLinkedin(unittest.TestCase):
 
+    URL_GET_BASIC_PROFILE = "https://api.linkedin.com/v1/people/~?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json"
+
+    URL_GET_COMPANIES = "https://api.linkedin.com/v1/companies:(id,name,logo-url,company-type)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json&is-company-admin=true"
+
+    GET_PROFILE_ERROR_403 = "https://api.linkedin.com/v1/people/~?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json"
+
+    GET_PROFILE_FIELDS = 'https://api.linkedin.com/v1/people/~:(id,num-connections,picture-url,email-address)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json'
+
+    GET_PROFILE_FIELD_NOT_FOUND = 'https://api.linkedin.com/v1/people/~:(id,num-connections,data-profile)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json'
+
     def setUp(self):
         access_token = 'AQVaE34QblVhvPlUn-6zWh3YLgHjx...'
         self.linkedin = PyLinkedinAPI(access_token)
@@ -33,14 +43,13 @@ class TestPyLinkedin(unittest.TestCase):
         '''
 
         httpretty.register_uri(httpretty.GET,
-                            "https://api.linkedin.com/v1/people/~?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json",
-                            body=data,
-                            content_type="application/json")
+                               TestPyLinkedin.URL_GET_BASIC_PROFILE,
+                               body=data,
+                               content_type="application/json")
 
         basic_profile = self.linkedin.get_basic_profile()
         data = json.loads(data)
         expect(basic_profile).to.equal(data)
-
 
     @httpretty.activate
     def test_get_companies(self):
@@ -62,9 +71,9 @@ class TestPyLinkedin(unittest.TestCase):
         '''
 
         httpretty.register_uri(httpretty.GET,
-                            "https://api.linkedin.com/v1/companies:(id,name,logo-url,company-type)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json&is-company-admin=true",
-                            body=data,
-                            content_type="application/json")
+                               TestPyLinkedin.URL_GET_COMPANIES,
+                               body=data,
+                               content_type="application/json")
 
         basic_profile = self.linkedin.get_companies()
         data = json.loads(data)
@@ -83,15 +92,16 @@ class TestPyLinkedin(unittest.TestCase):
         '''
 
         httpretty.register_uri(httpretty.GET,
-                            "https://api.linkedin.com/v1/people/~?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json",
-                            body=data,
-                            status=403,
-                            content_type="application/json")
+                               TestPyLinkedin.GET_PROFILE_ERROR_403,
+                               body=data,
+                               status=403,
+                               content_type="application/json")
 
         with self.assertRaises(PyLinkedinAPIClientError) as ex:
             self.linkedin.get_basic_profile()
 
-        expect(str(ex.exception)).to.equal( 'Member XXXX does not have permission to get company 9898')
+        expect(str(ex.exception)).to.equal(
+            'Member XXXX does not have permission to get company 9898')
 
     @httpretty.activate
     def test_get_profile_fields(self):
@@ -104,12 +114,13 @@ class TestPyLinkedin(unittest.TestCase):
             }
         '''
         httpretty.register_uri(httpretty.GET,
-                            'https://api.linkedin.com/v1/people/~:(id,num-connections,picture-url,email-address)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json',
-                            body=data,
-                            status=200,
-                            content_type="application/json")
+                               TestPyLinkedin.GET_PROFILE_FIELDS,
+                               body=data,
+                               status=200,
+                               content_type="application/json")
 
-        basic_profile = self.linkedin.get_profile(['id', 'num-connections', 'picture-url', 'email-address'])
+        basic_profile = self.linkedin.get_profile(
+            ['id', 'num-connections', 'picture-url', 'email-address'])
         data = json.loads(data)
         expect(basic_profile).to.equal(data)
 
@@ -126,15 +137,17 @@ class TestPyLinkedin(unittest.TestCase):
         '''
 
         httpretty.register_uri(httpretty.GET,
-                            'https://api.linkedin.com/v1/people/~:(id,num-connections,data-profile)?oauth2_access_token=AQVaE34QblVhvPlUn-6zWh3YLgHjx...&format=json',
-                            body=data,
-                            status=400,
-                            content_type="application/json")
+                               TestPyLinkedin.GET_PROFILE_FIELD_NOT_FOUND,
+                               body=data,
+                               status=400,
+                               content_type="application/json")
 
         with self.assertRaises(PyLinkedinAPIClientError) as ex:
-            self.linkedin.get_profile(['id', 'num-connections', 'data-profile'])
+            self.linkedin.get_profile(
+                ['id', 'num-connections', 'data-profile'])
 
-        expect(str(ex.exception)).to.equal('Unknown field {data-profile} in resource {Person}')
+        expect(str(ex.exception)).to.equal(
+            'Unknown field {data-profile} in resource {Person}')
 
     @httpretty.activate
     def test_publish_profile(self):

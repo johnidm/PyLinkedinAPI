@@ -45,8 +45,11 @@ clean-test:
 	rm -f .coverage
 	rm -fr htmlcov/
 
-lint:
+lint-tests:
 	flake8 PyLinkedinAPI tests
+
+lint:
+	flake8 PyLinkedinAPI
 
 test:
 	python setup.py test
@@ -60,14 +63,6 @@ coverage:
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs:
-	rm -f docs/PyLinkedinAPI.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ PyLinkedinAPI
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
-
 release: clean
 	python setup.py sdist register upload
 	python setup.py bdist_wheel upload
@@ -80,5 +75,5 @@ dist: clean
 install: clean
 	python setup.py install
 
-example-basic: 
+basic-example:
 	python examples/basic.py
