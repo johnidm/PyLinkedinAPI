@@ -3,6 +3,14 @@
 History
 -------
 
+0.1.6 (2016-01-02)
+---------------------
+
+* Improvements on project structure
+* Improvements on documentation
+* Added continuous delivery with Travis
+* Added Python support to version 2.7.x and 3.4.x
+
 0.1.5 (2015-10-10)
 ---------------------
 

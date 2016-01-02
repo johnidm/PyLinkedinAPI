@@ -1,7 +1,8 @@
 Python Linkedin API
 ======
 
-![](https://travis-ci.org/johnidm/PyLinkedinAPI.svg)
+[![Travis CI](https://travis-ci.org/johnidm/PyLinkedinAPI.svg)](https://travis-ci.org/johnidm/PyLinkedinAPI)
+[![PyPI](https://img.shields.io/pypi/v/PyLinkedinAPI.svg)](https://pypi.python.org/pypi/PyLinkedinAPI)
 
 The Python Linkedin provides a easy interface to the Linkedin API.
 
