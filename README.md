@@ -3,6 +3,7 @@ Python Linkedin API
 
 [![Travis CI](https://travis-ci.org/johnidm/PyLinkedinAPI.svg)](https://travis-ci.org/johnidm/PyLinkedinAPI)
 [![PyPI](https://img.shields.io/pypi/v/PyLinkedinAPI.svg)](https://pypi.python.org/pypi/PyLinkedinAPI)
+[![codecov.io](https://codecov.io/github/johnidm/PyLinkedinAPI/coverage.svg?branch=master)](https://codecov.io/github/johnidm/PyLinkedinAPI?branch=master)
 
 The Python Linkedin provides a easy interface to the Linkedin API.
 
