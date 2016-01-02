@@ -7,6 +7,9 @@ Python Linkedin API
 
 .. image:: https://travis-ci.org/johnidm/PyLinkedinAPI.svg
         :target: https://travis-ci.org/johnidm/PyLinkedinAPI
+        
+.. image:: https://coveralls.io/repos/johnidm/PyLinkedinAPI/badge.svg?branch=master&service=github 
+        :target: https://coveralls.io/github/johnidm/PyLinkedinAPI?branch=mast
 
 Python library to access Linkedin API
 
